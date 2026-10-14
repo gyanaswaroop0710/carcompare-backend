@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CarCompare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" id="logo" href="#" title="Home">Car<b>Compare</b></a>
+    <nav>
+      <button data-tab="browse" class="active">Browse</button>
+      <button data-tab="recommend">Recommend</button>
+      <button data-tab="compare">Compare <span id="cmpCount" class="pill">0</span></button>
+      <button data-tab="favorites">Saved <span id="favCount" class="pill">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- BROWSE -->
+  <section id="browse" class="tab active">
+    <div class="hero"><h1>Find the car that fits your road and your wallet.</h1><p>Compare specs, running cost and EMI side by side across 29 cars.</p><div class="chips" id="budgetChips"><button data-max="" class="on">Any budget</button><button data-max="6">Under ₹6 L</button><button data-max="10">Under ₹10 L</button><button data-max="15">Under ₹15 L</button></div><div class="chips" id="segChips"></div></div>
+    <div class="filters">
+      <input id="q" placeholder="Search brand or model…">
+      <select id="fBrand"><option value="">All brands</option></select>
+      <select id="fBody"><option value="">Any body type</option></select>
+      <select id="fFuel"><option value="">Any fuel</option></select>
+      <select id="fTrans"><option value="">Any transmission</option></select>
+      <select id="fType"><option value="">Any automatic type</option></select>
+      <select id="fSeats"><option value="">Any seats</option><option value="5">5+ seats</option><option value="7">7 seats</option></select>
+      <input id="fMax" type="number" step="0.5" placeholder="Max price (₹ L)">
+      <select id="fSort">
+        <option value="priceLakh|asc">Price: low → high</option>
+        <option value="priceLakh|desc">Price: high → low</option>
+        <option value="mileage|desc">Best mileage</option>
+        <option value="powerBhp|desc">Most powerful</option>
+        <option value="torqueNm|desc">Most torque</option>
+        <option value="engineCc|desc">Biggest engine</option>
+        <option value="safetyRating|desc">Safest</option>
+      </select>
+    </div>
+    <div id="count" class="muted"></div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <!-- RECOMMEND -->
+  <section id="recommend" class="tab">
+    <div class="panel">
+      <h2>Find my car</h2>
+      <p class="muted">Tell us your budget and what matters. We score every car out of 100.</p>
+      <div class="chips" id="profiles">
+        <button data-p="student">🎓 Student</button>
+        <button data-p="family">👨‍👩‍👧 Family</button>
+        <button data-p="enthusiast">🏁 Enthusiast</button>
+        <button data-p="balanced" class="on">⚖️ Balanced</button>
+      </div>
+      <div class="form">
+        <label>Budget (₹ lakh)<input id="rBudget" type="number" step="0.5" value="10"></label>
+        <label>Fuel<select id="rFuel"><option value="">Any</option></select></label>
+        <label>Min seats<select id="rSeats"><option value="">Any</option><option>5</option><option>7</option></select></label>
+        <label>Body type<select id="rBody"><option value="">Any</option></select></label>
+      </div>
+      <div class="sliders" id="sliders"></div>
+      <button class="primary" id="goReco">Get recommendations</button>
+    </div>
+    <div id="recoOut" class="reco"></div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="tab">
+    <div id="cmpOut"></div>
+  </section>
+
+  <!-- FAVORITES -->
+  <section id="favorites" class="tab">
+    <div id="favGrid" class="grid"></div>
+  </section>
+</main>
+
+<div id="modal" class="modal hidden"><div class="sheet" id="sheet"></div></div>
+<div id="tray"></div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
